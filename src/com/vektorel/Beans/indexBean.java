@@ -19,28 +19,41 @@ public class indexBean {
 	private List<tbldefault> liste = new ArrayList<>();
 	private List<tblokullar> okullistesi = new ArrayList<>();
 	
+	private tblokullar okulduzenle = new tblokullar();
+	
 	private tblokullar okulgiris = new tblokullar();
 	
 	public void okulekle() {
-		okullistesi.add(okulgiris);
+		tblokullar tmp = new tblokullar();
+		tmp.setId(okullistesi.size()+1L);
+		tmp.setOkuladi(okulgiris.getOkuladi());
+		tmp.setOkuladresi(okulgiris.getOkuladresi());
+		tmp.setOkulwebsiteadresi(okulgiris.getOkulwebsiteadresi());
+		tmp.setResimurl(okulgiris.getResimurl());
+		okullistesi.add(tmp);
 	}
 	
+	public void duzenle() {
+			okullistesi.set(okulduzenle.getId().intValue(), okulduzenle);	
+	}
 	
 	public indexBean() {
-		tblokullar okul;
 		
-		okul = new tblokullar();
-		okul.setId(1L);
-		okul.setOkuladi("A. Kalpler Anaokulu");
-		okul.setOkuladresi("Öveçler Dikmen");
-		okul.setOkulwebsiteadresi("https://okul.com.tr/anaokulu/ankara/ozel-asil-kalpler-anaokulu-82");
-		okul.setResimurl("https://cdn.okul.com.tr/schools/82/360x310/ozel-asil-kalpler-anaokulu-1.jpg");
-		okullistesi.add(okul);
 	}
 	
 	
 	
 	
+	public tblokullar getOkulduzenle() {
+		return okulduzenle;
+	}
+
+
+	public void setOkulduzenle(tblokullar okulduzenle) {
+		this.okulduzenle = okulduzenle;
+	}
+
+
 	public tblokullar getOkulgiris() {
 		return okulgiris;
 	}
